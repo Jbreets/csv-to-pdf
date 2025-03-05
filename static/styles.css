@@ -1,0 +1,86 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+@font-face {
+	font-family: 'CustomFont';
+	src: url('fonts/Poppins-Regular.woff2') format('woff2'),
+		 url('fonts/Poppins-Regular.woff') format('woff'),
+		 url('fonts/Poppins-Regular.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+  }
+  
+  body {
+	height: 100vh;
+	font-family: 'CustomFont', sans-serif;
+  }
+h1 {
+	font-family: 'CustomFont', sans-serif;
+	font-size: 45px;
+  }
+  h2 {
+	font-family: 'CustomFont', sans-serif;
+	font-size: 38px;
+  }
+  h3 {
+	font-family: 'CustomFont', sans-serif;
+	font-size: 32px;
+  }
+  h4 {
+	font-family: 'CustomFont', sans-serif;
+	font-size: 28px;
+  }
+  h5 {
+	font-family: 'CustomFont', sans-serif;
+	font-size: 24px;
+  }
+  h6 {
+	font-family: 'CustomFont', sans-serif;
+	font-size: 20px;
+	
+  }
+
+.header {
+    text-align: center;
+	font-size: 2em;
+}
+.row {
+	--bs-gutter-x: 0rem;
+	background-color: #f3f3f3;
+	padding: 22px;
+}
+.row a  {
+	margin: auto;
+	height: auto;
+	width: 200px;
+}
+.content {
+    padding: 30px;
+    text-align: center;
+}
+.content h1{
+    margin-bottom: 50px;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	max-width: 350px;
+	margin: 0 auto;
+}

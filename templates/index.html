@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CSV and Convert to PDF</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" sizes="96x96">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-reboot.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+</head>
+<body>
+    <div>
+        <header class="row" id="header">
+            <a href="">
+                <img src="{{ url_for('static', filename='ultra-events.svg') }}" alt="Ultra Events Logo">
+            </a>
+            <h1 class="header">CSV to PDF Gen</h1>
+        </header>
+    </div>
+    <div class="content">
+
+
+    
+    <h1>Upload an Event CSV File</h1>
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="file" name="csv_file" accept=".csv" required>
+        <button class="btn btn-primary" type="submit">Upload & Convert</button>
+    </form>
+
+    {% if result %}
+        <h2>{{ result }}</h2>
+
+        {% if pdf_filename %}
+            <p><a href="{{ url_for('download_file', filename=pdf_filename) }}">Download PDF</a></p>
+        {% endif %}
+    {% endif %}
+    </div>
+</body>
+</html>
