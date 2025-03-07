@@ -151,6 +151,13 @@ def create_pdf_from_csv(csv_filename, pdf_filename):
 
 
     df = pd.read_csv(csv_filename)
+
+    # altering csv to better match PARQ
+    df["Name"] = df["First name"] + " " + df["Last name"]
+    df.drop(columns=["First name", "Last name"], inplace=True)
+    col_name = df.pop("Name")
+    df.insert(0, "Name", col_name)
+
     
     # Create a PDF document
     pdf = canvas.Canvas(pdf_filename, pagesize=letter)
@@ -235,7 +242,7 @@ def create_pdf_from_csv(csv_filename, pdf_filename):
                 # current_y -= font_size * 0.5
 
             # elif column == "Medical info ":
-            elif column == "Medical info":                
+            elif column == "Medical details":                
                 current_y = draw_wrapped_text(pdf, "", text_x, current_y, max_width, font_size, extra_space=10, line_spacing=font_size + 4)
                 current_y -= font_size * 0.5
                 current_y = draw_bold_highlighted_text(pdf, "Medical information", text_x, current_y, max_width, 13, bg_gray=0.9, padding=3) 
@@ -284,7 +291,8 @@ def create_pdf_from_csv(csv_filename, pdf_filename):
 
 # clean_csv_data('manchester-mma-2025-parq-info.csv')
 # clean_csv_data('aspire-match-up.csv')
+# clean_csv_data('salford-match-up-sheets.csv')
 
 # base function for testing
 # create_pdf_from_csv('chester-sheet.csv', 'chester-sheet.pdf')
-# create_pdf_from_csv('cleaned_data.csv', 'aspire-match-up.pdf')
+# create_pdf_from_csv('salford-match-up-sheets.csv', 'salford-match-up-sheets.pdf')
