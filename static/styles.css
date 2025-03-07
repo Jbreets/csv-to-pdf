@@ -84,3 +84,10 @@ form {
 	max-width: 350px;
 	margin: 0 auto;
 }
+.example-format {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	max-width: 900px;
+	text-align: center;
+}

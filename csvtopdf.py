@@ -1,5 +1,6 @@
 import sys
 import os
+import chardet
 import pandas as pd
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -147,10 +148,16 @@ def create_pdf_from_csv(csv_filename, pdf_filename):
     - pdf_filename: name of the pdf file
     """
 
-    # Get absoloute data points for each part so can allocate to different areas better
+    
+    # encodes the file properly depending on how it is coded
+    with open(csv_filename, 'rb') as f:
+        result = chardet.detect(f.read())
+    encoding = result['encoding']
+ 
+    df = pd.read_csv(csv_filename, encoding=encoding)
+    # drops any completly empty rows
+    df = df.dropna(how="all")
 
-
-    df = pd.read_csv(csv_filename)
 
     # altering csv to better match PARQ
     df["Name"] = df["First name"] + " " + df["Last name"]
@@ -174,6 +181,8 @@ def create_pdf_from_csv(csv_filename, pdf_filename):
     
     # Process each row in the DataFrame
     for index, row in df.iterrows():
+
+        print(row)
 
         pdf.drawInlineImage('static/ultra-events-white-bg.png', 430, 700, width=150,height=50)
 
@@ -295,4 +304,4 @@ def create_pdf_from_csv(csv_filename, pdf_filename):
 
 # base function for testing
 # create_pdf_from_csv('chester-sheet.csv', 'chester-sheet.pdf')
-# create_pdf_from_csv('salford-match-up-sheets.csv', 'salford-match-up-sheets.pdf')
+# create_pdf_from_csv('Salford Match Up Sheets.csv', 'Salford Match Up Sheets.pdf')
