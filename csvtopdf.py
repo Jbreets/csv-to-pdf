@@ -296,8 +296,6 @@ def create_pdf_from_csv(csv_filename, pdf_filename):
 # Previous experience
 # Medical info 
 
-
-
 # clean_csv_data('manchester-mma-2025-parq-info.csv')
 # clean_csv_data('aspire-match-up.csv')
 # clean_csv_data('salford-match-up-sheets.csv')
@@ -305,3 +303,4 @@ def create_pdf_from_csv(csv_filename, pdf_filename):
 # base function for testing
 # create_pdf_from_csv('chester-sheet.csv', 'chester-sheet.pdf')
 # create_pdf_from_csv('Salford Match Up Sheets.csv', 'Salford Match Up Sheets.pdf')
+# create_pdf_from_csv('parq-cleaned-data.csv', 'parq-cleaned-data.pdf')

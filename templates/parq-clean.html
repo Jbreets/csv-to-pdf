@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload CSV{% endblock %}
+
+{% block content %}
+    <h1>Upload raw PARQ file and csv of wanted emails</h1>
+    <p>(Files must be .csv and emails must not include any headers)</p>
+    <form class="csv_form" method="POST" action="/parq" enctype="multipart/form-data">
+        <div>
+            <label for="parq_file">Upload raw PARQ file</label>
+            <input type="file" name="parq_file" accept=".csv" required>
+        </div>
+        <div>
+            <label for="emails">Upload file with emails</label>
+            <input type="file" name="emails" accept=".csv" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Upload & Convert</button>
+    </form>
+
+    {% if result %}
+        <h2>{{ result }}</h2>
+
+        {% if csv_filename %}
+            <p><a href="{{ url_for('download_file', filename=csv_filename) }}">Download CSV</a></p>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload CSV{% endblock %}
+
+{% block content %}
+    <h1>Upload an Event CSV File</h1>
+    <form method="POST" action="/pdf" enctype="multipart/form-data">
+        <input type="file" name="csv_file" accept=".csv" required>
+        <button class="btn btn-primary" type="submit">Upload & Convert</button>
+    </form>
+
+    {% if result %}
+        <h2>{{ result }}</h2>
+
+        {% if pdf_filename %}
+            <p><a href="{{ url_for('download_file', filename=pdf_filename) }}">Download PDF</a></p>
+        {% endif %}
+    {% endif %}
+
+    <!-- Upload format example -->
+    <div class="example-format">
+        <h3>To avoid errors, upload CSV files in this format:</h3>
+        <p>(Ensure headers match exactly, including capitalization.)</p>
+        <img src="{{ url_for('static', filename='excel-format-exampke.png') }}" alt="Example CSV Format">
+    </div>
+{% endblock %}

@@ -81,7 +81,7 @@ h1 {
 form {
 	display: flex;
 	flex-direction: column;
-	max-width: 350px;
+	max-width: 600px;
 	margin: 0 auto;
 }
 .example-format {
@@ -90,4 +90,8 @@ form {
 	margin: 0 auto;
 	max-width: 900px;
 	text-align: center;
+}
+.csv_form {
+	display: flex;
+	flex-direction: column;
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CSV to PDF Gen{% endblock %}</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" sizes="96x96">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-reboot.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <div>
+        <header class="row" id="header">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='ultra-events.svg') }}" alt="Ultra Events Logo">
+            </a>
+            <h1 class="header">CSV to PDF Gen</h1>
+        </header>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
+            <!-- <a class="navbar-brand" href="{{ url_for('about') }}">About</a> -->
+            <a class="navbar-brand" href="{{ url_for('parq') }}">Clean PARQ</a>
+            <a class="navbar-brand" href="{{ url_for('pdf') }}">PDF Gen</a>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
