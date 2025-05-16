@@ -95,3 +95,12 @@ form {
 	display: flex;
 	flex-direction: column;
 }
+.example-files {
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	justify-content: center;
+}
+.example-files div {
+	padding: 35px;
+}
