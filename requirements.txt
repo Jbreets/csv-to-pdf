@@ -2,3 +2,5 @@ Flask
 pandas
 chardet
 gunicorn
+reportlab
+datetime
