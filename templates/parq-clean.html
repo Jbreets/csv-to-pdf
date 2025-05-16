@@ -24,5 +24,16 @@
             <p><a href="{{ url_for('download_file', filename=csv_filename) }}">Download CSV</a></p>
         {% endif %}
     {% endif %}
+    <div class="example-files">
+        <div>
+            <h3>Example parq report</h3>    
+            <a href="{{ url_for('static', filename='test-files/test-parq-report.csv') }}" class="btn btn-primary" download>Download parq</a>
+        </div>
+        <div>
+            <h3>Example email names</h3>
+            <a href="{{ url_for('static', filename='test-files/test-emails.csv') }}" class="btn btn-primary" download>Download emails</a>
+        </div>
+        <!-- <img src="{{ url_for('static', filename='excel-format-exampke.png') }}" alt="Example CSV Format"> -->
+    </div>
 
 {% endblock %}
