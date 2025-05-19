@@ -3,37 +3,43 @@
 {% block title %}Upload CSV{% endblock %}
 
 {% block content %}
-    <h1>Upload raw PARQ file and csv of wanted emails</h1>
-    <p>(Files must be .csv and emails must not include any headers)</p>
+<div class="content">
+    <h1>Upload raw PARQ file and CSV of wanted emails</h1>
+    <p style="margin-bottom: 30px;">(Files must be .csv and emails must not include any headers)</p>
+
     <form class="csv_form" method="POST" action="/parq" enctype="multipart/form-data">
-        <div>
-            <label for="parq_file">Upload raw PARQ file</label>
+        <div style="margin-bottom: 20px;">
+            <label for="parq_file"><strong>Upload raw PARQ file</strong></label><br>
             <input type="file" name="parq_file" accept=".csv" required>
         </div>
-        <div>
-            <label for="emails">Upload file with emails</label>
+        <div style="margin-bottom: 30px;">
+            <label for="emails"><strong>Upload file with emails</strong></label><br>
             <input type="file" name="emails" accept=".csv" required>
         </div>
-        <button class="btn btn-primary" type="submit">Upload & Convert</button>
+        <button class="btn btn-primary" type="submit" style="width: 200px; margin: 0 auto;">Upload & Convert</button>
     </form>
 
     {% if result %}
-        <h2>{{ result }}</h2>
-
+        <h2 style="margin-top: 50px;">{{ result }}</h2>
         {% if csv_filename %}
-            <p><a href="{{ url_for('download_file', filename=csv_filename) }}">Download CSV</a></p>
+            <p><a href="{{ url_for('download_file', filename=csv_filename) }}" class="btn btn-success" style="margin-top: 15px;">Download CSV</a></p>
         {% endif %}
     {% endif %}
-    <div class="example-files">
-        <div>
-            <h3>Example parq report</h3>    
-            <a href="{{ url_for('static', filename='test-files/test-parq-report.csv') }}" class="btn btn-primary" download>Download parq</a>
-        </div>
-        <div>
-            <h3>Example email names</h3>
-            <a href="{{ url_for('static', filename='test-files/test-emails.csv') }}" class="btn btn-primary" download>Download emails</a>
-        </div>
-        <!-- <img src="{{ url_for('static', filename='excel-format-exampke.png') }}" alt="Example CSV Format"> -->
-    </div>
 
+    <hr style="margin: 60px auto; width: 60%; border: 1px solid #ccc;">
+
+    <div class="example-format">
+        <h2 style="margin-bottom: 20px;">Example Files</h2>
+        <div class="example-files">
+            <div>
+                <h3>Example PARQ Report</h3>    
+                <a href="{{ url_for('static', filename='test-files/test-parq-report.csv') }}" class="btn btn-outline-primary" download>Download PARQ</a>
+            </div>
+            <div>
+                <h3>Example Email List</h3>
+                <a href="{{ url_for('static', filename='test-files/test-emails.csv') }}" class="btn btn-outline-primary" download>Download Emails</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -104,3 +104,8 @@ form {
 .example-files div {
 	padding: 35px;
 }
+button, .btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+}

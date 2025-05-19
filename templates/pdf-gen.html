@@ -3,24 +3,36 @@
 {% block title %}Upload CSV{% endblock %}
 
 {% block content %}
+<div class="content">
     <h1>Upload an Event CSV File</h1>
-    <form method="POST" action="/pdf" enctype="multipart/form-data">
-        <input type="file" name="csv_file" accept=".csv" required>
-        <button class="btn btn-primary" type="submit">Upload & Convert</button>
+    
+    <form method="POST" action="/pdf" enctype="multipart/form-data" class="csv_form" style="margin-top: 30px;">
+        <div style="margin-bottom: 25px;">
+            <label for="csv_file"><strong>Select a CSV File</strong></label><br>
+            <input type="file" name="csv_file" accept=".csv" required style="margin-top: 10px;">
+        </div>
+        <button class="btn btn-primary" type="submit" style="width: 200px; margin: 0 auto;">Upload & Convert</button>
     </form>
 
     {% if result %}
-        <h2>{{ result }}</h2>
+        <h2 style="margin-top: 50px;">{{ result }}</h2>
 
         {% if pdf_filename %}
-            <p><a href="{{ url_for('download_file', filename=pdf_filename) }}">Download PDF</a></p>
+            <p>
+                <a href="{{ url_for('download_file', filename=pdf_filename) }}" class="btn btn-success" style="margin-top: 15px;">
+                    Download PDF
+                </a>
+            </p>
         {% endif %}
     {% endif %}
 
+    <hr style="margin: 60px auto 40px auto; width: 60%; border: 1px solid #ccc;">
+
     <!-- Upload format example -->
     <div class="example-format">
-        <h3>To avoid errors, upload CSV files in this format:</h3>
+        <h3 style="margin-bottom: 15px;">CSV Upload Format Guide</h3>
         <p>(Ensure headers match exactly, including capitalization.)</p>
-        <img src="{{ url_for('static', filename='excel-format-exampke.png') }}" alt="Example CSV Format">
+        <img src="{{ url_for('static', filename='excel-format-exampke.png') }}" alt="Example CSV Format" style="margin-top: 20px; max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
     </div>
+</div>
 {% endblock %}
