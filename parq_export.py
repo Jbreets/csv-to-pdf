@@ -6,7 +6,8 @@ def filter_by_email(parq_file, email_csv):
     email_content = email_csv.read()  # Read the file content as bytes
     email_csv.seek(0)  # Reset the file pointer to the beginning
     result = chardet.detect(email_content)  # Detect encoding
-    encoding = result['encoding']
+    encoding = result['encoding'] if result['encoding'] else 'utf-8'
+
 
     # Read the email CSV into a DataFrame
     emails = pd.read_csv(email_csv, encoding=encoding, header=None)
@@ -15,8 +16,6 @@ def filter_by_email(parq_file, email_csv):
     # Extract emails and convert to a set
     data_list = emails.iloc[:, 0].tolist()
     email_set = set(data_list)
-
-    print(data_list)
 
     # Columns to keep in the final output
     columns_to_keep = [
@@ -35,7 +34,7 @@ def filter_by_email(parq_file, email_csv):
     parq = parq.dropna(how="all")  # Drop completely empty rows
 
     # Format the "Date of birth" column
-    parq['Date of birth'] = pd.to_datetime(parq['Date of birth']).dt.strftime('%d/%m/%Y')
+    parq['Date of birth'] = pd.to_datetime(parq['Date of birth'], dayfirst=True).dt.strftime('%d/%m/%Y')
 
     # Filter the parq DataFrame based on the email set
     filtered_parq = parq[parq["Email"].isin(email_set)]
