@@ -147,7 +147,6 @@ def create_pdf_from_csv(csv_filename, pdf_filename):
     - csv_filename: name of the csv file
     - pdf_filename: name of the pdf file
     """
-
     
     # encodes the file properly depending on how it is coded
     with open(csv_filename, 'rb') as f:
