@@ -4,17 +4,30 @@
 
 {% block content %}
 <div class="content">
-    <h1>Upload raw PARQ file and CSV of wanted emails</h1>
+    <h1>Filter PARQ by email</h1>
     <p style="margin-bottom: 30px;">(Files must be .csv and emails must not include any headers)</p>
 
     <form class="csv_form" method="POST" action="/parq" enctype="multipart/form-data">
-        <div style="margin-bottom: 20px;">
-            <label for="parq_file"><strong>Upload raw PARQ file</strong></label><br>
-            <input type="file" name="parq_file" accept=".csv" required>
-        </div>
-        <div style="margin-bottom: 30px;">
-            <label for="emails"><strong>Upload file with emails</strong></label><br>
-            <input type="file" name="emails" accept=".csv" required>
+        <div class="files-container">
+            
+            <div style="margin-bottom: 20px;">
+                <label for="parq_file"><strong>Upload raw PARQ file</strong></label><br>
+                <label class="btn btn-outline-primary">
+                    <input type="file" name="parq_file" id="parq_file" accept=".csv" required>
+                    Choose File
+                </label>
+                <span id="parq_filename" class="filename-display"></span>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label for="emails"><strong>Upload file with emails</strong></label><br>
+                <label class="btn btn-outline-primary">
+                    <input type="file" name="emails" id="emails" accept=".csv" required>
+                    Choose File
+                </label>
+                <span id="emails_filename" class="filename-display"></span>
+            </div>
+
         </div>
         <button class="btn btn-primary" type="submit" style="width: 200px; margin: 0 auto;">Upload & Convert</button>
     </form>

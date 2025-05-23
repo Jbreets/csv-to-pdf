@@ -28,9 +28,11 @@ time, mark, audio, video {
   }
   
   body {
-	height: 100vh;
-	font-family: 'CustomFont', sans-serif;
-  }
+    height: auto; /* was 100vh — can clip on long pages */
+    font-family: 'CustomFont', sans-serif;
+    background-color: #f9f9f9;
+    line-height: 1.6;
+}
 h1 {
 	font-family: 'CustomFont', sans-serif;
 	font-size: 45px;
@@ -72,38 +74,86 @@ h1 {
 	width: 200px;
 }
 .content {
-    padding: 30px;
+    padding: 60px 20px;
+    max-width: 960px;
+    margin: 0 auto;
     text-align: center;
 }
-.content h1{
-    margin-bottom: 50px;
+
+.content h1 {
+    margin-bottom: 30px;
 }
 form {
-	display: flex;
-	flex-direction: column;
-	max-width: 600px;
-	margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between form fields */
+    max-width: 500px;
+    margin: 0 auto 60px auto; /* bottom margin for spacing below form */
+}
+
+form label {
+    margin-bottom: 8px;
+    font-weight: bold;
 }
 .example-format {
-	display: flex;
-	flex-direction: column;
-	margin: 0 auto;
-	max-width: 900px;
-	text-align: center;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+.example-files {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+.example-files div {
+    padding: 20px;
+}
+hr {
+    margin: 60px auto;
+    width: 60%;
+    border: 0;
+    border-top: 1px solid #ccc;
 }
 .csv_form {
 	display: flex;
 	flex-direction: column;
 }
-.example-files {
+
+.files-container {
 	display: flex;
 	flex-direction: row;
-	margin: 0 auto;
-	justify-content: center;
+	width: -webkit-fill-available;
+    justify-content: space-around;
 }
-.example-files div {
-	padding: 35px;
+.files-container div {
+	display: flex;
+	flex-direction: column;
 }
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3;
+}
+
 button, .btn {
     padding: 12px 20px;
     font-size: 1rem;
